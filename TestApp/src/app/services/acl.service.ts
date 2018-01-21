@@ -4,21 +4,10 @@ import { AclService } from 'ng2-acl';
 
 import 'rxjs/add/operator/toPromise';
 
-// import { Acl } from '../dummy-data/acl';
-
-const ACL = {
-  'admin': [
-    { name: 'view_user_profile' },
-    { name: 'view_advance_user_profile' },
-    { name: 'contact_user' }
-  ],
-  'sales': [
-      { name: 'view_user_profile' },
-      { name: 'view_advance_user_profile' }
-  ],
-  'support': [
-      { name: 'view_user_profile' }
-  ]
+const aclData = {
+  support: ['view_user_profile'],
+  sales: ['view_user_profile', 'view_advance_user_profile'],
+  admin: ['view_user_profile', 'view_advance_user_profile', 'contact_user']
 };
 
 @Injectable()
@@ -28,15 +17,8 @@ export class ACLService {
   setUpPermissions(): void {
     this.aclService.flushRoles();
     if (this.aclService.resume()) {
-      for (const key in ACL) {
-        if (ACL.hasOwnProperty(key)) {
-          const element = ACL[key];
-          element.forEach(permission => {
-            this.aclService.addAbility(key, permission.name);
-          });
-        }
-      }
-      this.aclService.attachRole('support')
+      this.aclService.setAbilities(aclData);
+      this.aclService.attachRole('admin')
       console.log(this.aclService.getRoles());
     }
   }
