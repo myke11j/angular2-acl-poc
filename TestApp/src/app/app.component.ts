@@ -9,13 +9,11 @@ import { ACLService } from './services/acl.service';
 })
 export class AppComponent {
   title = 'app';
-  // can;
-  // ready;
-  constructor (private aclService: ACLService, private acl: AclService) {
-    aclService.setUpPermissions();
+  can;
+  constructor (private aclService1: ACLService, private aclService: AclService) {
+    aclService1.setUpPermissions();
   }
   ngOnInit() {
-    // this.can = this.acl.can;
-    // this.ready = this.acl.resume();
+    this.can = this.aclService.can.bind(this.aclService);
   }
 }
