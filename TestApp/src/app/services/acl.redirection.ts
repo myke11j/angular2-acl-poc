@@ -8,8 +8,9 @@ export class AclRedirection {
   ) {}
  
   redirectTo(type: string) {
-    if (type === 'Unauthorized') {
-      this.router.navigate(['/']);
+    if (type === 'not-authorized') {
+      console.log('Not authorized to check this route');
+      this.router.navigate(['/not-authorized']);
     }
   }
   

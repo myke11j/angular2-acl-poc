@@ -1,13 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageNotFoundComponent } from './components/page-not-found/pageNotFound.component';
-import { UserListComponent } from './components/user-list/userList.component';
-import { UserDetailComponent } from './components/user-detail/userDetail.component';
-import { AppComponent } from './app.component';
 import { AclService } from 'ng2-acl';
+
+// Componets
+import { PageNotFoundComponent } from './components/page-not-found/pageNotFound.component';
+import { UserProfileComponent } from './components/user-profile/userProfile.component';
+import { AdvanceUserProfileComponent } from './components/advance-user-profile/advanceUserProfile.component';
+import { ContactUserComponent } from './components/contact-user/contactUser.component';
+import { AppComponent } from './app.component';
+
+// Services or factories
 import { AclDemoResolver } from './demo.resolve';
-import { AclRedirection } from './app.redirection';
+import { AclRedirection } from './services/acl.redirection';
+import { ACLService } from './services/acl.service';
 
 import { AppRoutingModule }     from './app-routing.module';
 
@@ -15,8 +21,9 @@ import { AppRoutingModule }     from './app-routing.module';
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    UserDetailComponent,
-    UserListComponent
+    UserProfileComponent,
+    AdvanceUserProfileComponent,
+    ContactUserComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +32,8 @@ import { AppRoutingModule }     from './app-routing.module';
   providers: [
     AclService,
     AclRedirection,
-    AclDemoResolver
+    AclDemoResolver,
+    ACLService
   ],
   bootstrap: [AppComponent]
 })
