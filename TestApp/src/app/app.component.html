@@ -9,7 +9,7 @@
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link" [routerLink]="['/user-profile']">User Profile</a>
           <a class="mdl-navigation__link" [routerLink]="['/advance-user-profile']">Advance User Profile</a>
-          <a *ngIf="can('admin')" class="mdl-navigation__link" [routerLink]="['/contact-user']">Contact User</a>
+          <a *ngIf="hasRole('admin')" class="mdl-navigation__link" [routerLink]="['/contact-user']">Contact User</a>
         </nav>
       </div>
     </header>
